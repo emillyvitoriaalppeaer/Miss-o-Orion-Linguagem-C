@@ -1,0 +1,83 @@
+//Bibliotecas
+#include <stdio.h>
+#include <stdlib.h>
+
+//Constantes
+#define DIAS 7
+#define RECURSOS 3
+#define TRIPULANTES 5
+#define TAM_NOME 50
+
+//Funções
+void cadTripulantes(char tripulantes[TRIPULANTES][TAM_NOME]);
+void regConsumo(float consumo[DIAS][RECURSOS]);
+void exibConsumo(float consumo[DIAS][RECURSOS]);
+float calcTotalRecurso(float consumo[DIAS][RECURSOS], int recurso);
+float calcMediaRecurso(float consumo[DIAS][RECURSOS], int recurso);
+void verifAlertas(float consumo[DIAS][RECURSOS]);
+void gerarRelatorio(float consumo[DIAS][RECURSOS]);
+
+//Principal
+int main() {
+	
+	char tripulantes[TRIPULANTES][TAM_NOME];
+	float consumo[DIAS][RECURSOS] = {0};
+	int opcao;
+	
+	do {
+		printf("\n===== SISTEMA DA MISSAO ESTELAR ORION =====\n");
+        printf("1. Cadastrar tripulantes\n");
+		printf("2. Registrar consumo dos recursos\n");
+		printf("3. Exibir matriz de consumo\n");
+		printf("4. Exibir consumo total de cada recurso\n");
+		printf("5. Exibir consumo medio diario\n");
+		printf("6. Verificar alertas da missao\n");
+		printf("7. Gerar relatorio final\n");
+		printf("0. Sair\n");
+		printf("Escolha uma opcao: ");
+		scanf("%d", &opcao);
+		getch();
+		
+		switch (opcao) {
+		
+		case 1: cadTripulantes(tripulantes); break;
+		
+		case 2: regConsumo(consumo); break;
+		
+		case 3: exibConsumo(consumo); break;
+		
+		case 4:
+		 printf("\nTotal de oxigenio: %.2f", calcTotalRecurso(consumo,
+		 0));
+		 
+		 printf("\nTotal de agua: %.2f", calcTotalRecurso(consumo, 1));
+		 
+		 printf("\nTotal de energia: %.2f\n", calcTotalRecurso(consumo,
+		 2));
+		 
+		 break;
+		 
+		 case 5:
+		 printf("\nMedia diaria de oxigenio: %.2f",
+		 
+		 calcMediaRecurso(consumo, 0));
+		 
+		 printf("\nMedia diaria de agua: %.2f", calcMediaRecurso(consumo,
+		 1));
+		 
+		 printf("\nMedia diaria de energia: %.2f\n",
+		 calcMediaRecurso(consumo, 2));
+		 break;
+		 
+		 case 6: verifAlertas(consumo); break;
+		 
+		 case 7: gerarRelatorio(consumo); break;
+		 
+		 case 0: printf("Encerrando o sistema...\n"); break;
+		 
+		 default: printf("Opcao invalida. Tente novamente.\n");
+		 }
+	}while (opcao != 0);
+	
+	return 0;
+}
