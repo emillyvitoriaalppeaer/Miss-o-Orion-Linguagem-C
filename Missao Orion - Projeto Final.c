@@ -8,14 +8,47 @@
 #define TRIPULANTES 5
 #define TAM_NOME 50
 
-//Funções
-void cadTripulantes(char tripulantes[TRIPULANTES][TAM_NOME]);
-void regConsumo(float consumo[DIAS][RECURSOS]);
-void exibConsumo(float consumo[DIAS][RECURSOS]);
-float calcTotalRecurso(float consumo[DIAS][RECURSOS], int recurso);
-float calcMediaRecurso(float consumo[DIAS][RECURSOS], int recurso);
-void verifAlertas(float consumo[DIAS][RECURSOS]);
-void gerarRelatorio(float consumo[DIAS][RECURSOS]);
+//FunÃ§Ãµes
+
+//Cadastro de tripulantes
+void cadTripulantes(char tripulantes[TRIPULANTES][TAM_NOME]) {
+	int s;
+	for (int i = 0; i < TRIPULANTES; i++){
+		printf("Digite o nome do tripulante %d.\n", i + 1);
+		scanf("%s", &tripulantes[i]);
+	}
+	
+	printf("OS ESCOLHIDOS FORAM: \n");
+	for (int i = 0; i < TRIPULANTES; i++) {
+		printf("%d. %s\n", i + 1, &tripulantes[i]);
+	}
+}
+
+void regConsumo(float consumo[DIAS][RECURSOS]){
+	float agua, energia, oxigenio;
+	for (int i = 0; i < DIAS; i++) {
+		printf("Dia %d: \n", i + 1);
+		printf("Litros de agua: \n");
+		scanf("%f", &consumo[i][0]);
+		printf("Watts de energia: \n");
+		scanf("%f", &consumo[i][1]);
+		printf("Cilindros de oxigenio: \n");
+		scanf("%f", &consumo[i][2]);
+	}
+	
+	for (int i = 0; i < DIAS; i++){
+		printf("Dia: %d ", i + 1);
+		printf("Litros de agua: %0.f ||", consumo[i][0]);
+		printf("Watts de energia: %0.f ||", consumo[i][1]);
+		printf("Cilindros de oxigenio: %0.f \n", consumo[i][2]);
+	}
+}
+ float calcTotalRecurso(float consumo[DIAS][RECURSOS], int recurso) {
+ 	int dias;
+ 	for (dias= 0; dias < DIAS; dias++){
+
+ 	total por recurso += [DIAS][RECURSO];
+ }
 
 //Principal
 int main() {
@@ -36,7 +69,7 @@ int main() {
 		printf("0. Sair\n");
 		printf("Escolha uma opcao: ");
 		scanf("%d", &opcao);
-		getch();
+		
 		
 		switch (opcao) {
 		
@@ -44,9 +77,7 @@ int main() {
 		
 		case 2: regConsumo(consumo); break;
 		
-		case 3: exibConsumo(consumo); break;
-		
-		case 4:
+	    case 4:
 		 printf("\nTotal de oxigenio: %.2f", calcTotalRecurso(consumo,
 		 0));
 		 
@@ -56,28 +87,12 @@ int main() {
 		 2));
 		 
 		 break;
-		 
-		 case 5:
-		 printf("\nMedia diaria de oxigenio: %.2f",
-		 
-		 calcMediaRecurso(consumo, 0));
-		 
-		 printf("\nMedia diaria de agua: %.2f", calcMediaRecurso(consumo,
-		 1));
-		 
-		 printf("\nMedia diaria de energia: %.2f\n",
-		 calcMediaRecurso(consumo, 2));
-		 break;
-		 
-		 case 6: verifAlertas(consumo); break;
-		 
-		 case 7: gerarRelatorio(consumo); break;
-		 
-		 case 0: printf("Encerrando o sistema...\n"); break;
-		 
-		 default: printf("Opcao invalida. Tente novamente.\n");
-		 }
-	}while (opcao != 0);
+		
+		default: return 0;
+		
+	
+	}} while (opcao != 0);
 	
 	return 0;
 }
+
